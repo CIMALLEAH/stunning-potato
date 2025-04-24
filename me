@@ -1,0 +1,25 @@
+using System;
+using System.IO;
+
+public class IReadable {
+    public void ReadAll(string filepath) {
+       if (!File.Exists(filepath))
+        {
+            File.Create(filepath).Close();
+            return;
+
+            using (StreamReader sr = new StreamReader(filepath))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+            }
+        }
+       else
+        {
+            Console.WriteLine("No entries found.");
+        }
+    }
+}
